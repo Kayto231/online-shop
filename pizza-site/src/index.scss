@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  font-family: "Inter", system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e7f6ff;
+}
+
+* {
+  font-family: "Inter";
+}
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+}
+
+.content {
+  h1 {
+    margin: 0;
+  }
+}
+
+.allSneakers {
+  flex-wrap: wrap;
+}
+
+.search-block {
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0px 15px;
+  position: relative;
+
+  .removeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+  }
+  input {
+    border: 0;
+    padding: 13px;
+    font-size: 16px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    width: 1140px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .wrapper {
+    width: 960px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .wrapper {
+    width: 720px;
+  }
+  .card {
+    width: 141px;
+    .images {
+      width: 100px;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .wrapper {
+    width: 540px;
+  }
+  .d-flex {
+    display: flex;
+    flex-flow: column wrap;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+  }
+  .search-block {
+    flex-direction: row;
+  }
+  .overlay {
+    display: none;
+  }
+}
+@media screen and (max-width: 575px) {
+  .wrapper {
+    width: 100%;
+  }
+  .drawer {
+    width: 100%;
+  }
+
+  .d-flex {
+    display: flex;
+    flex-flow: column wrap;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      margin-bottom: 30px;
+
+      .favorite {
+        position: absolute;
+        left: 90px;
+        cursor: pointer;
+      }
+      .images {
+        align-items: center;
+        width: 100;
+      }
+    }
+  }
+  .allBootsWord {
+    margin-bottom: 40px;
+  }
+  .search-block {
+    flex-direction: row;
+  }
+}
+
+.overlay {
+  display: none;
+}

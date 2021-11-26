@@ -10,7 +10,8 @@ import {
 const initialState = {
   sneakers: [],
   favorites: [],
-  cartItems: []
+  cartItems: [],
+  isLoading: true
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -18,7 +19,8 @@ export const userReducer = (state = initialState, action) => {
     case GET_SNEAKERS:
       return {
         ...state,
-        sneakers: action.payload
+        sneakers: action.payload,
+        isLoading: false
       };
     case GET_FAVORITES:
       return {

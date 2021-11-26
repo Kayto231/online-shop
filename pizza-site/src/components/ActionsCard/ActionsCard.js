@@ -2,13 +2,16 @@ import React, { useState } from "react";
 
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
+import CardLoading from "../CardLoading/CardLoading";
 
 export default function ActionsCard(props) {
-  const { sneakers, favorites, cartItems } = useSelector(
+  const { sneakers, favorites, cartItems, isLoading } = useSelector(
     state => state.sneakers
   );
-  // State of getting API about the items
 
+  // State of getting API about the items
+  const arr = new Array(8).fill([], 0);
+  console.log(arr);
   // Search bar
   const [search, setSearch] = useState("");
   const onChangeSearchInput = event => {
@@ -41,21 +44,27 @@ export default function ActionsCard(props) {
           </div>
         </div>
         <div className="d-flex allSneakers">
-          {sneakers
-            .filter(el => el.title.toLowerCase().includes(search.toLowerCase()))
-            .map(obj =>
-              <Card
-                key={obj.id}
-                title={obj.title}
-                price={obj.price}
-                imgUrl={obj.imgUrl}
-                id={obj.id}
-                isFavorite={favorites.some(
-                  el => Number(el.id) === Number(obj.id)
+          {isLoading
+            ? arr.map(el => <CardLoading />)
+            : sneakers
+                .filter(el =>
+                  el.title.toLowerCase().includes(search.toLowerCase())
+                )
+                .map(obj =>
+                  <Card
+                    key={obj.id}
+                    title={obj.title}
+                    price={obj.price}
+                    imgUrl={obj.imgUrl}
+                    id={obj.id}
+                    isFavorite={favorites.some(
+                      el => Number(el.id) === Number(obj.id)
+                    )}
+                    Added={cartItems.some(
+                      el => Number(el.id) === Number(obj.id)
+                    )}
+                  />
                 )}
-                Added={cartItems.some(el => Number(el.id) === Number(obj.id))}
-              />
-            )}
         </div>
       </div>
     </div>

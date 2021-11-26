@@ -28,6 +28,68 @@ body {
   flex-wrap: wrap;
 }
 
+.cardContainer {
+  width: 210px;
+  height: 290px;
+  margin: 0 auto 40px;
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+
+  .cardContent {
+    margin: 0 auto;
+    width: 150px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    .cardPhoto {
+      margin: 40px auto 16px;
+      width: 150px;
+      height: 90px;
+      background: #f2f2f2;
+      border-radius: 10px;
+    }
+    .cardDescription--1 {
+      margin: 0 auto;
+      width: 150px;
+      height: 15px;
+      background: #f2f2f2;
+      border-radius: 3px;
+    }
+    .cardDescription--2 {
+      align-self: flex-start;
+      margin-top: 4px;
+      width: 75px;
+      height: 15px;
+      background: #f2f2f2;
+      border-radius: 3px;
+    }
+    .cardPrice {
+      display: flex;
+      flex-direction: row;
+
+      .price {
+        margin-top: 22px;
+        align-self: flex-start;
+        margin-right: 40px;
+        width: 80px;
+        height: 24px;
+        background: #f2f2f2;
+        border-radius: 8px;
+      }
+      .button {
+        align-self: flex-end;
+        margin-top: 15px;
+        width: 32px;
+        height: 32px;
+        background: #f2f2f2;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;

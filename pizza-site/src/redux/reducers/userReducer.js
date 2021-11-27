@@ -15,7 +15,7 @@ const initialState = {
   cartItems: [],
   isLoading: true,
   isCartOpened: false,
-  isBannerOpened: true,
+  isBannerOpened: false,
   bannerObject: {}
 };
 

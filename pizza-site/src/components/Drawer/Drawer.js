@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Context from "../../Context/Context";
 import { removeCartItem } from "../../redux/actions/userActionsRemove";
 import { isCartOpenedfunction } from "../../redux/reducers/userReducer";
 
@@ -14,7 +13,6 @@ function Drawer() {
     dispatch(removeCartItem(cartItems, obj));
   };
 
-  const value = useContext(Context);
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>

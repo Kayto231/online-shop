@@ -11,6 +11,7 @@ import styles from "./Card.module.scss";
 function Card({ title, price, imgUrl, id, isFavorite, Added }) {
   const { favorites, cartItems } = useSelector(state => state.sneakers);
   const dispatch = useDispatch();
+  // console.log(cartItems);
 
   const handleAdded = obj => {
     cartItems.find(el => el.id === obj.id)

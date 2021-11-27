@@ -4,6 +4,7 @@ import {
   GET_SNEAKERS,
   REMOVE_CART,
   REMOVE_FAVORITE,
+  SET_ISCARTOPENED,
   SET_SNEAKER
 } from "../consts";
 
@@ -11,7 +12,8 @@ const initialState = {
   sneakers: [],
   favorites: [],
   cartItems: [],
-  isLoading: true
+  isLoading: true,
+  isCartOpened: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -47,6 +49,11 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         cartItems: action.payload
       };
+    case SET_ISCARTOPENED:
+      return {
+        ...state,
+        isCartOpened: action.payload
+      };
     default:
       return state;
   }
@@ -70,4 +77,8 @@ export const removeFavoriteItems = favorite => ({
 export const addToCart = addToCart => ({
   type: SET_SNEAKER,
   payload: addToCart
+});
+export const isCartOpenedfunction = isCartOpened => ({
+  type: SET_ISCARTOPENED,
+  payload: isCartOpened
 });

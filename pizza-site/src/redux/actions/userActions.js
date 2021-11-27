@@ -17,33 +17,37 @@ export const getSneakersBackEnd = () => {
 
 export const getCartItems = () => {
   return async dispatch => {
-    const cartResponse = await axios.get(
-      "https://6153b0673f4c4300171593fc.mockapi.io/cart"
-    );
-    dispatch(loadCart(cartResponse.data));
+    const cartItemsResponse = localStorage.getItem("cart");
+    const data = cartItemsResponse ? JSON.parse(cartItemsResponse) : [];
+    dispatch(loadCart(data));
   };
 };
 
 export const getFavoriteItems = () => {
   return async dispatch => {
-    const favoriteResponse = await axios.get(
-      "https://6153b0673f4c4300171593fc.mockapi.io/posts"
-    );
-
-    dispatch(loadFavorites(favoriteResponse.data));
+    const favoriteItemsResponse = localStorage.getItem("favorite");
+    const data = favoriteItemsResponse ? JSON.parse(favoriteItemsResponse) : [];
+    localStorage.setItem("favorite", JSON.stringify(data));
+    dispatch(loadFavorites(data));
   };
 };
 
 export const onAddToCart = (state, obj) => {
   return async dispatch => {
-    await axios.post("https://6153b0673f4c4300171593fc.mockapi.io/cart", obj);
-
+    const prevState = localStorage.getItem("cart");
+    const data = prevState ? JSON.parse(prevState.split(",")) : [];
+    data.push(obj);
+    localStorage.setItem("cart", JSON.stringify(data));
     dispatch(addToCart([...state, obj]));
   };
 };
+
 export const onAddToFavorite = (state, obj) => {
   return async dispatch => {
-    await axios.post("https://6153b0673f4c4300171593fc.mockapi.io/posts", obj);
+    const prevState = localStorage.getItem("favorite");
+    const data = prevState ? JSON.parse(prevState.split(",")) : [];
+    data.push(obj);
+    localStorage.setItem("favorite", JSON.stringify(data));
 
     dispatch(loadFavorites([...state, obj]));
   };

@@ -1,21 +1,23 @@
-import axios from "axios";
 import { removeCart, removeFavoriteItems } from "../reducers/userReducer";
 
 export const removeCartItem = (state, objRemove) => {
   return async dispatch => {
-    axios.delete(
-      `https://6153b0673f4c4300171593fc.mockapi.io/cart/${objRemove.id}`
-    );
+    const prevState = localStorage.getItem("cart");
+    const data = prevState
+      ? JSON.parse(prevState).filter(el => +el.id !== +objRemove.id)
+      : [];
+    localStorage.setItem("cart", JSON.stringify(data));
     dispatch(removeCart(state.filter(el => +el.id !== +objRemove.id)));
   };
 };
 
 export const removeFavorite = (state, objRemove) => {
   return async dispatch => {
-    axios.delete(
-      `https://6153b0673f4c4300171593fc.mockapi.io/posts/${objRemove.id}`
-    );
-    console.log(state);
+    const prevState = localStorage.getItem("favorite");
+    const data = prevState
+      ? JSON.parse(prevState).filter(el => el.id !== objRemove.id)
+      : [];
+    localStorage.setItem("favorite", JSON.stringify(data));
     dispatch(removeFavoriteItems(state.filter(el => +el.id !== +objRemove.id)));
   };
 };

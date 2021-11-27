@@ -1,17 +1,18 @@
 import styles from "./Header.module.scss";
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Context from "../../Context/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { isCartOpenedfunction } from "../../redux/reducers/userReducer";
 
 function Header(props) {
-  const value = useContext(Context);
+  const { isCartOpened } = useSelector(state => state.sneakers);
+  const dispatch = useDispatch();
   return (
     <header className={styles.header}>
       <div className="d-flex align-center">
         <li>
           <Link to="/">
-            {" "}
-            <img
+            {" "}<img
               className={styles.logoImage}
               width="40"
               height="40"
@@ -27,14 +28,16 @@ function Header(props) {
         </div>
       </div>
       <ul className="d-flex user">
-        <li onClick={() => value.handleCartClick()} className="mr-30">
+        <li
+          onClick={() => dispatch(isCartOpenedfunction(!isCartOpened))}
+          className="mr-30"
+        >
           <img width="18" height="18" src="/logo/cart.svg" alt="Cart" />
           <span>Корзина</span>
         </li>
         <li className={styles.favorite}>
           <Link to="/favorite">
-            {" "}
-            <img
+            {" "}<img
               onClick={() => console.log("CLicked")}
               width="18"
               height="18"

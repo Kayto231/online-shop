@@ -4,3 +4,4 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const REMOVE_CART = "REMOVE_CART";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const SET_SNEAKER = "SET_SNEAKER";
+export const SET_ISCARTOPENED = "SET_ISCARTOPENED";

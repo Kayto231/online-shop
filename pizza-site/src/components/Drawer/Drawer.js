@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Context from "../../Context/Context";
 import { removeCartItem } from "../../redux/actions/userActionsRemove";
+import { isCartOpenedfunction } from "../../redux/reducers/userReducer";
 
 import styles from "./Drawer.module.scss";
 
-function Drawer({ items = [] }) {
-  const { cartItems } = useSelector(state => state.sneakers);
+function Drawer() {
+  const { cartItems, isCartOpened } = useSelector(state => state.sneakers);
   const dispatch = useDispatch();
   const removeItemFromCart = obj => {
     dispatch(removeCartItem(cartItems, obj));
   };
-  console.log(cartItems);
 
   const value = useContext(Context);
   return (
@@ -21,7 +21,7 @@ function Drawer({ items = [] }) {
         <h2 className={styles.shopping}>
           Корзина{" "}
           <img
-            onClick={() => value.handleCartClick()}
+            onClick={() => dispatch(isCartOpenedfunction(!isCartOpened))}
             className={styles.removeBtnS}
             src="/logo/btn-remove.svg"
             alt="Close"
@@ -62,8 +62,8 @@ function Drawer({ items = [] }) {
                     <span>Итого:</span>
                     <div />
                     <b>
-                      {items.length >= 1 &&
-                        items
+                      {cartItems.length >= 1 &&
+                        cartItems
                           .map(obj => obj.price)
                           .reduce((prev, current) => (current += prev)) +
                           " грн"}
@@ -93,7 +93,7 @@ function Drawer({ items = [] }) {
                 Добавьте хотя бы один товар, что бы сделать заказ.
               </p>
               <button
-                onClick={() => value.handleCartClick()}
+                onClick={() => dispatch(isCartOpenedfunction(!isCartOpened))}
                 className={styles.greenBtn}
               >
                 <img

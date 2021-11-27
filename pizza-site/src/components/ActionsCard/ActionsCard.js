@@ -4,14 +4,14 @@ import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 import CardLoading from "../CardLoading/CardLoading";
 
-export default function ActionsCard(props) {
+export default function ActionsCard() {
   const { sneakers, favorites, cartItems, isLoading } = useSelector(
     state => state.sneakers
   );
 
   // State of getting API about the items
-  const arr = new Array(8).fill([], 0);
-  console.log(arr);
+  const arr = new Array(8).fill([]);
+
   // Search bar
   const [search, setSearch] = useState("");
   const onChangeSearchInput = event => {
@@ -45,7 +45,7 @@ export default function ActionsCard(props) {
         </div>
         <div className="d-flex allSneakers">
           {isLoading
-            ? arr.map(el => <CardLoading />)
+            ? arr.map((_, i) => <CardLoading key={i + 1} />)
             : sneakers
                 .filter(el =>
                   el.title.toLowerCase().includes(search.toLowerCase())

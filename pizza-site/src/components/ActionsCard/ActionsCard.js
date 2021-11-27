@@ -60,6 +60,7 @@ export default function ActionsCard() {
                     isFavorite={favorites.some(
                       el => Number(el.id) === Number(obj.id)
                     )}
+                    description={obj.description}
                     Added={cartItems.some(
                       el => Number(el.id) === Number(obj.id)
                     )}

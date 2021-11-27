@@ -5,6 +5,7 @@ import ActionsCard from "./components/ActionsCard/ActionsCard.js";
 import Favorite from "./components/Favorite/Favorite.js";
 import Header from "./components/Header/Header.js";
 import Drawer from "./components/Drawer/Drawer.js";
+import Banner from "./components/Banner/Banner.jsx";
 import {
   getCartItems,
   getFavoriteItems,
@@ -16,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
-  const { isCartOpened } = useSelector(state => state.sneakers);
+  const { isCartOpened, isBannerOpened } = useSelector(state => state.sneakers);
 
   // loading and unacking API with items for the first load
   useEffect(
@@ -32,7 +33,7 @@ function App() {
     <div className="wrapper clear">
       {isCartOpened && <Drawer />}
       <Header />
-
+      {isBannerOpened && <Banner />}
       <Switch>
         <Route exact path="/" component={ActionsCard} />
         <Route exact path="/favorite" component={Favorite} />

@@ -2,6 +2,7 @@ import {
   GET_CART,
   GET_FAVORITES,
   GET_SNEAKERS,
+  ISBANNER_OPENED,
   REMOVE_CART,
   REMOVE_FAVORITE,
   SET_ISCARTOPENED,
@@ -13,7 +14,9 @@ const initialState = {
   favorites: [],
   cartItems: [],
   isLoading: true,
-  isCartOpened: false
+  isCartOpened: false,
+  isBannerOpened: true,
+  bannerObject: {}
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -54,6 +57,12 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         isCartOpened: action.payload
       };
+    case ISBANNER_OPENED:
+      return {
+        ...state,
+        isBannerOpened: action.payload.isBannerOpened,
+        bannerObject: action.payload.obj
+      };
     default:
       return state;
   }
@@ -81,4 +90,9 @@ export const addToCart = addToCart => ({
 export const isCartOpenedfunction = isCartOpened => ({
   type: SET_ISCARTOPENED,
   payload: isCartOpened
+});
+
+export const isBannerOpenedFunction = obj => ({
+  type: ISBANNER_OPENED,
+  payload: obj
 });

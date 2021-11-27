@@ -5,13 +5,15 @@ import {
   removeCartItem,
   removeFavorite
 } from "../../redux/actions/userActionsRemove";
+import { isBannerOpenedFunction } from "../../redux/reducers/userReducer";
 
 import styles from "./Card.module.scss";
 
-function Card({ title, price, imgUrl, id, isFavorite, Added }) {
-  const { favorites, cartItems } = useSelector(state => state.sneakers);
+function Card({ title, price, imgUrl, id, isFavorite, Added, description }) {
+  const { favorites, cartItems, isBannerOpened } = useSelector(
+    state => state.sneakers
+  );
   const dispatch = useDispatch();
-  // console.log(cartItems);
 
   const handleAdded = obj => {
     cartItems.find(el => el.id === obj.id)
@@ -31,7 +33,6 @@ function Card({ title, price, imgUrl, id, isFavorite, Added }) {
       ? dispatch(removeFavorite(favorites, obj))
       : dispatch(onAddToFavorite(favorites, obj));
   };
-
   return (
     <div className={styles.card}>
       <div className={styles.contentCard}>
@@ -46,6 +47,13 @@ function Card({ title, price, imgUrl, id, isFavorite, Added }) {
           />
         </div>
         <img
+          onClick={() =>
+            dispatch(
+              isBannerOpenedFunction({
+                isBannerOpened: !isBannerOpened,
+                obj: { title, price, imgUrl, id, description }
+              })
+            )}
           className={styles.imgMain}
           width={133}
           height={112}

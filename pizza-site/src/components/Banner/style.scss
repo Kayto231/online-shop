@@ -1,0 +1,107 @@
+.container {
+  min-width: 350px;
+  width: 100%;
+  height: 750px;
+  background: #ffffff;
+  border: 1px solid gray;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+    .titleBanner {
+      margin-left: 20px;
+    }
+    .closeBtn {
+      margin-top: 40px;
+      margin-right: 20px;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    .topCard {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        text-align: center;
+      }
+      .photos {
+        align-self: flex-start;
+        margin: 20px;
+        width: 300px;
+        height: 200px;
+        border: 1px solid gray;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      .middle {
+        margin-top: 100px;
+        margin-left: -70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        .price {
+          display: flex;
+          span {
+            font-weight: 500;
+          }
+        }
+        .description {
+          display: flex;
+          width: 400px;
+        }
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: flex-end;
+      .addtoCart {
+        margin-right: 20px;
+        button {
+          margin-right: 20px;
+          border: 0;
+          border-radius: 40px;
+          width: 100%;
+          height: 55px;
+          background: #9dd558;
+          color: #ffffff;
+          font-weight: 600;
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.25 ease-in-out;
+          &:hover {
+            box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            background: lighten(#9dd558, 5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .container {
+    overflow: scroll;
+
+    .middle {
+      margin-top: 0 !important;
+      .description {
+        width: 200px !important;
+        margin-left: 200px !important;
+      }
+    }
+  }
+}

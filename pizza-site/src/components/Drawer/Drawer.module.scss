@@ -233,7 +233,7 @@
 // .overlay {
 //   display: none;
 // }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 376px) {
   .overlay {
     .drawer {
       position: fixed;
@@ -241,6 +241,7 @@
       width: 100%;
 
       .cartTotalBlock {
+        left: 5%;
         ul {
           li {
             flex-flow: row;

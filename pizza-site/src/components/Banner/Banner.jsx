@@ -36,10 +36,12 @@ export default function Banner() {
           />
         </div>
       </div>
-      <div className="card">
+      <div className="cardBanner">
         <div className="topCard">
           <div className="title">
-            {bannerObject.title}
+            <b>
+              {bannerObject.title}
+            </b>
           </div>
           <div className="photos">
             <img src={bannerObject.imgUrl} alt="phot" />
